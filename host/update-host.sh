@@ -1,12 +1,13 @@
 #!/bin/sh
 
-. /etc/htcNet.conf
+[ -f /etc/htcNet.conf ] && . /etc/htcNet.conf
 
 cd "$PREFIX"
 
 git pull origin master
 
-cp "client/*.sh" "htcNet"
+SCRIPTS="client/*.sh"
+cp $SCRIPTS "htcNet"
 tar -czvf "htcNet/client.tar.gz" client
 
 SCRIPTS="$PREFIX/host/*.sh"
