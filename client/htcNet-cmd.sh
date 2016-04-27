@@ -9,12 +9,13 @@ HOST="172.27.5.101"
 log() {
     NOW=$(date +"%F %H:%M:%S")
     LOG="[$NOW] $1"
-    echo $1
-    echo -e "$1\n" >> "$LOGFILE"
+    echo "$LOG"
+    echo "$LOG" >> "$LOGFILE"
 }
 
-if [ ! -z "$APPEND_LOG" ]; then
-    echo > "$LOGFILE"
+if [ -z "$APPEND_LOG" ]; then
+    echo "NO APPEND LOG"
+    truncate -s 0 "$LOGFILE"
 fi
 
 if [ -z "$CMD" ]; then
@@ -24,7 +25,7 @@ fi
 
 log "RUNNING COMMAND $CMD"
 
-SCRIPT_URL="http://$HOST/htcNet/host/$CMD.sh"
+SCRIPT_URL="http://$HOST/htcNet/$CMD.sh"
 
 log "Download: $SCRIPT_URL"
 
@@ -32,6 +33,6 @@ SCRIPT=$(curl -fsSL $SCRIPT_URL)
 
 log "Downloaded. RUN"
 
-sh < "$SCRIPT" 2&>1 >> "$LOGFILE"
+sh -c "$SCRIPT" 2>&1 | tee -a "$LOGFILE"
 
 log "DONE"
