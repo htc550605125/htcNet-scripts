@@ -4,7 +4,6 @@
 
 LOGFILE=/var/log/htcNet-cmd.log
 CMD="$1"
-HOST="172.27.5.101"
 
 log() {
     NOW=$(date +"%F %H:%M:%S")

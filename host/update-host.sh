@@ -10,8 +10,8 @@ SCRIPTS="client/*.sh"
 cp $SCRIPTS "htcNet"
 tar -czvf "htcNet/client.tar.gz" client
 
-SCRIPTS="$PREFIX/host/*.sh"
+SCRIPTS="$PREFIX/host/*"
 for SCRIPT in $SCRIPTS
 do
-    ln -sf $SCRIPT /usr/bin
+    [[ $date !=~ ^.*\.conf$ ]] && ln -sf $SCRIPT /usr/bin
 done

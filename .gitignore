@@ -107,7 +107,6 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-/htcNet/*.sh
-/htcNet/*.tar.gz
+/htcNet/*
 
 
