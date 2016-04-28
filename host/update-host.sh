@@ -13,5 +13,5 @@ tar -czvf "htcNet/client.tar.gz" client
 SCRIPTS="$PREFIX/host/*"
 for SCRIPT in $SCRIPTS
 do
-    [[ $date !=~ ^.*\.conf$ ]] && ln -sf $SCRIPT /usr/bin
+    [[ $date =~ ^.*\.conf$ ]] || ln -sf $SCRIPT /usr/bin
 done
