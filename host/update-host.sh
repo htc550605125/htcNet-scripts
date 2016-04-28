@@ -4,9 +4,8 @@
 
 cd "$PREFIX"
 
-git pull origin master
-
-SCRIPTS="client/*.sh"
+SCRIPTS="client/*"
+mkdir -p htcNet
 cp $SCRIPTS "htcNet"
 tar -czvf "htcNet/client.tar.gz" client
 
